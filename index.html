@@ -198,11 +198,23 @@ function run(){
  💰 Giá gốc: ${res.total.toLocaleString()} VNĐ<br>
  🔻 Chiết khấu: ${res.discount}%<br>
  <b style="color:red;font-size:18px">💵 Thành tiền ${res.final.toLocaleString()} VNĐ</b><br>
- <span style="color:#666;font-size:13px">⚠️ Giá trên chỉ mang tính tham khảo, có thể thay đổi theo thực tế công trình</span>
+ <span style="color:#666;font-size:13px">⚠️Giá trên chỉ mang tính tham khảo, có thể thay đổi theo thực tế công trình</span>
  `;
- lastMsg=`${name} - ${phone} - ${res.final}`;
 
- // Google Sheet
+ lastMsg=`KHÁCH HÀNG ORINEX
+👤 ${name}
+📞 ${phone}
+📍 ${address}
+
+🏠 ${typeText}
+📐 DT sàn: ${res.san} m²
+🎯 DT sơn: ${res.dtson.toFixed(0)} m²
+🎨 ${paintText}
+
+💰 Giá gốc: ${res.total.toLocaleString()} VNĐ
+🔻 Chiết khấu: ${res.discount}%
+💵 Thành tiền: ${res.final.toLocaleString()} VNĐ`;
+
  fetch(SHEET_URL,{
   method:"POST",
   body:JSON.stringify({
@@ -216,7 +228,6 @@ function run(){
   })
  });
 
- // Email
  let form=document.getElementById("emailForm");
  form.name.value=name;
  form.phone.value=phone;
@@ -232,7 +243,7 @@ function run(){
  Swal.fire({icon:'success',title:'Mọi chi tiết xin liên hệ: <br> Mr. Tuấn: 0983.211.699'});
 }
 
-// ===== ZALO =====
+// ===== ZALO AUTO =====
 function zalo(){
  if(!lastMsg){
   Swal.fire({
@@ -243,22 +254,20 @@ function zalo(){
   return;
  }
 
- // encode nội dung
- let text = encodeURIComponent(lastMsg);
+ navigator.clipboard.writeText(lastMsg);
 
- // link mở Zalo có sẵn nội dung
+ let text = encodeURIComponent(lastMsg);
  let url = `https://zalo.me/0983211699?text=${text}`;
 
  Swal.fire({
    icon:'success',
-   title:'Mở Zalo',
-   text:'Tin nhắn đã được điền sẵn, chỉ cần bấm gửi',
+   title:'Đã mở Zalo',
+   html:'✔ Đã copy nội dung<br>',
    confirmButtonText:'Mở Zalo'
  }).then(()=>{
    window.open(url,"_blank");
  });
 }
-  
 </script>
 </body>
 </html>
