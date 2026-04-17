@@ -24,52 +24,24 @@ body{
 }
 .logo{text-align:center}
 .logo img{width:140px}
-h2{
-  text-align:center;
-  color:#0a3d91;
-  font-size:18px;
-  margin:10px 0;
-}
+h2{text-align:center;color:#0a3d91}
 input,select{
-  width:100%;
-  padding:12px;
-  margin:6px 0;
-  border-radius:10px;
-  border:1px solid #ccc;
-  font-size:16px;
+  width:100%;padding:12px;margin:6px 0;
+  border-radius:10px;border:1px solid #ccc;
 }
 .btn{
-  width:100%;
-  padding:13px;
-  margin-top:6px;
-  border-radius:10px;
-  border:none;
-  font-size:16px;
-  font-weight:bold;
-  color:#fff;
-  text-align:center;
-  text-decoration:none;
-  display:block;
-  cursor: pointer;
+  width:100%;padding:13px;margin-top:6px;
+  border-radius:10px;border:none;color:#fff;
+  font-weight:bold;cursor:pointer;
 }
 .main{background:#1e73be}
 .zalo{background:#0084ff}
 .call{background:#28a745}
 .download{background:#ff9800}
 .result{
-  margin-top:12px;
-  padding:12px;
-  background:#fff;
-  border:1px solid #ddd;
-  border-radius:10px;
-  line-height:1.5;
-  word-wrap:break-word;
-  display: none;
-}
-hr{
-  margin:12px 0;
-  border:none;
-  border-top:1px solid #eee;
+  margin-top:12px;padding:12px;
+  border:1px solid #ddd;border-radius:10px;
+  display:none;
 }
 </style>
 </head>
@@ -92,8 +64,8 @@ hr{
 <input id="floor" type="number" placeholder="Số tầng">
 
 <select id="houseType">
-<option value="ong">Nhà phố (nhà ống)</option>
-<option value="vuong">Biệt thự (nhà vuông)</option>
+<option value="ong">Nhà phố</option>
+<option value="vuong">Biệt thự</option>
 <option value="cap4">Nhà cấp 4</option>
 </select>
 
@@ -109,40 +81,35 @@ hr{
 <option value="110000">Cao cấp</option>
 </select>
 
-<input id="discount" type="text" placeholder="% chiết khấu">
+<input id="discount" placeholder="% chiết khấu">
 
 <button class="btn main" onclick="run()">🚀 TÍNH GIÁ</button>
 
 <div id="kq" class="result"></div>
 
-<button class="btn zalo" onclick="zalo()">💬 Zalo (Mr. Tuấn: 0983.211.699)</button>
-<a href="tel:0983211699" class="btn call">📞 Gọi ngay để được tư vấn</a>
-
-<a class="btn download" target="_blank" href="https://drive.google.com/uc?export=download&id=1RTFXaD4YMYi6w20ef9lCJnwc3SHuIuU7">
-📥 Tải bảng báo giá
-</a>
+<button class="btn zalo" onclick="zalo()">💬 Zalo</button>
+<a href="tel:0983211699" class="btn call">📞 Gọi</a>
+<a class="btn download" target="_blank"
+href="https://drive.google.com/uc?export=download&id=1RTFXaD4YMYi6w20ef9lCJnwc3SHuIuU7">
+📥 Tải báo giá</a>
 
 </div>
 
-<!-- FORM GỬI EMAIL -->
-<form id="emailForm" action="https://formsubmit.co/ldt2304@gmail.com" method="POST" target="hidden_iframe" style="display:none;">
-<input name="name">
-<input name="phone">
-<input name="address">
-<input name="type">
-<input name="area">
-<input name="dtson">
-<input name="paint">
-<input name="discount">
-<input name="price">
-
-<input type="hidden" name="_subject" value="Khách hàng mới Orinex">
+<!-- FORM EMAIL -->
+<form id="emailForm"
+action="https://formsubmit.co/ldt2304@gmail.com"
+method="POST" target="hidden_iframe" style="display:none;">
+<input name="name"><input name="phone"><input name="address">
+<input name="type"><input name="area"><input name="dtson">
+<input name="paint"><input name="discount"><input name="price">
+<input type="hidden" name="_subject" value="Khách hàng Orinex">
 <input type="hidden" name="_captcha" value="false">
 </form>
-
 <iframe name="hidden_iframe" style="display:none;"></iframe>
 
 <script>
+const SHEET_URL = "https://script.google.com/macros/s/AKfycbw9bT1bfrTawCFFJdBIIW-gse1U_iGVBrmwsmpFbjXLNiynfzO-riUIZ9_Mn3BgCLJS/exec";
+
 const nameInput=document.getElementById("name");
 const phoneInput=document.getElementById("phone");
 const addressInput=document.getElementById("address");
@@ -156,100 +123,81 @@ const kq=document.getElementById("kq");
 
 let lastMsg="";
 
-discountInput.addEventListener("blur",function(){
-    let val=this.value.replace("%","");
-    if(val)this.value=val+"%";
-});
-discountInput.addEventListener("focus",function(){
-    this.value=this.value.replace("%","");
-});
-
 function tinh(){
-    let area=+areaInput.value||0;
-    let floor=+floorInput.value||0;
-    let room=+roomInput.value||0;
-    let type=houseType.value;
-    let paintVal=+paintInput.value||0;
-    let discount=discountInput.value.replace("%","");
-    discount=+discount||0;
+ let area=+areaInput.value||0;
+ let floor=+floorInput.value||0;
+ let room=+roomInput.value||0;
+ let type=houseType.value;
+ let paintVal=+paintInput.value||0;
+ let discount=(discountInput.value||"").replace("%","");
+ discount=+discount||0;
 
-    let san=area*(floor||1);
-    let dtson=type==="cap4"?area*3.5: san*((type==="ong")?(room<4?4.5:5):(room<4?5.5:6));
-    let total=dtson*paintVal;
-    let final=total-total*discount/100;
+ let san=area*(floor||1);
+ let dtson=type==="cap4"?area*3.5:
+ san*((type==="ong")?(room<4?4.5:5):(room<4?5.5:6));
+ let total=dtson*paintVal;
+ let final=total-total*discount/100;
 
-    return{san,dtson,total,final,discount};
+ return{san,dtson,total,final,discount};
 }
 
 function run(){
-    let name=nameInput.value.trim();
-    let phone=phoneInput.value.trim();
-    let address=addressInput.value.trim();
+ let name=nameInput.value.trim();
+ let phone=phoneInput.value.trim();
+ let address=addressInput.value.trim();
 
-    if(!name||!phone){
-        Swal.fire({
-            icon:'warning',
-            title:'Thiếu thông tin',
-            text:'Nhập Họ tên và SĐT!',
-        });
-        return;
-    }
+ if(!name||!phone){
+   Swal.fire({icon:'warning',title:'Nhập thiếu thông tin'});
+   return;
+ }
 
-    let typeText=houseType.selectedOptions[0].text;
-    let paintText=paintInput.selectedOptions[0].text;
-    let res=tinh();
+ let typeText=houseType.selectedOptions[0].text;
+ let paintText=paintInput.selectedOptions[0].text;
+ let res=tinh();
 
-    kq.style.display="block";
-    kq.innerHTML=`
-        <b>👤 ${name}</b><br>
-        📞 ${phone}<br>
-        📍 ${address}<br><br>
-        🏠 ${typeText}<br>
-        📐 DT sàn: ${res.san} m²<br>
-        🎯 DT sơn: ${res.dtson.toFixed(0)} m²<br>
-        🎨 ${paintText}<br><br>
-        💰 Giá gốc: ${res.total.toLocaleString()} VNĐ<br>
-        🔻 Chiết khấu: ${res.discount}%<br>
-        <b style="color:red;font-size:18px">💵 ${res.final.toLocaleString()} VNĐ</b>
-    `;
+ kq.style.display="block";
+ kq.innerHTML=`
+ <b>${name}</b><br>${phone}<br>${address}<br>
+ DT sơn: ${res.dtson.toFixed(0)} m²<br>
+ <b style="color:red">${res.final.toLocaleString()} VNĐ</b>
+ `;
 
-    lastMsg=`KHÁCH HÀNG ORINEX
-${name} - ${phone}
-Đ/C: ${address}
-${typeText}
-DT sơn: ${res.dtson.toFixed(0)} m2
-${paintText}
-CK: ${res.discount}%
-Giá: ${res.final.toLocaleString()} VNĐ`;
+ lastMsg=`${name} - ${phone} - ${res.final}`;
 
-    // GỬI EMAIL
-    let form=document.getElementById("emailForm");
-    form.name.value=name;
-    form.phone.value=phone;
-    form.address.value=address;
-    form.type.value=typeText;
-    form.area.value=res.san;
-    form.dtson.value=res.dtson.toFixed(0);
-    form.paint.value=paintText;
-    form.discount.value=res.discount;
-    form.price.value=res.final.toLocaleString();
-    form.submit();
+ // GOOGLE SHEET
+ fetch(SHEET_URL,{
+  method:"POST",
+  body:JSON.stringify({
+   name,phone,address,
+   type:typeText,
+   area:res.san,
+   dtson:res.dtson.toFixed(0),
+   paint:paintText,
+   discount:res.discount,
+   price:res.final.toLocaleString()
+  })
+ });
 
-    Swal.fire({
-        icon:'success',
-        title:'Đã gửi báo giá!',
-        text:'Thông tin đã gửi về hệ thống',
-    });
+ // EMAIL
+ let form=document.getElementById("emailForm");
+ form.name.value=name;
+ form.phone.value=phone;
+ form.address.value=address;
+ form.type.value=typeText;
+ form.area.value=res.san;
+ form.dtson.value=res.dtson.toFixed(0);
+ form.paint.value=paintText;
+ form.discount.value=res.discount;
+ form.price.value=res.final.toLocaleString();
+ form.submit();
+
+ Swal.fire({icon:'success',title:'Đã gửi & lưu data'});
 }
 
 function zalo(){
-    if(!lastMsg){
-        Swal.fire({icon:'info',title:'Thông báo',text:'Bấm TÍNH GIÁ trước'});
-        return;
-    }
-    navigator.clipboard.writeText(lastMsg);
-    alert("Đã copy, dán vào Zalo!");
-    window.open("https://zalo.me/0983211699","_blank");
+ if(!lastMsg){alert("Bấm tính giá trước");return;}
+ navigator.clipboard.writeText(lastMsg);
+ window.open("https://zalo.me/0983211699");
 }
 </script>
 </body>
