@@ -102,15 +102,15 @@ hr{
 </select>
 
 <select id="paint">
-<option value="60000">Kinh tế</option>
-<option value="75000">Tiết kiệm</option>
-<option value="90000">Trung cấp</option>
-<option value="110000">Cao cấp</option>
+<option value="60000">Sơn Kinh tế</option>
+<option value="75000">Sơn Tiết kiệm</option>
+<option value="90000">Sơn Trung cấp</option>
+<option value="110000">Sơn Cao cấp</option>
 </select>
 
 <input id="discount" type="text" placeholder="% chiết khấu">
 
-<button class="btn main" onclick="run()">🚀 TÍNH GIÁ</button>
+<button class="btn main" onclick="run()">🚀 BẤM TÍNH GIÁ</button>
 
 <div id="kq" class="result"></div>
 
@@ -178,7 +178,7 @@ function run(){
  let address=addressInput.value.trim();
 
  if(!name||!phone){
-  Swal.fire({icon:'warning',title:'Thiếu thông tin',text:'Nhập Họ tên và SĐT'});
+  Swal.fire({icon:'warning',title:'Xin hãy nhập',text:'Họ tên và SĐT'});
   return;
  }
 
@@ -197,7 +197,7 @@ function run(){
  🎨 ${paintText}<br><br>
  💰 Giá gốc: ${res.total.toLocaleString()} VNĐ<br>
  🔻 Chiết khấu: ${res.discount}%<br>
- <b style="color:red;font-size:18px">💵 ${res.final.toLocaleString()} VNĐ</b><br><br>
+ <b style="color:red;font-size:18px">💵 Thành tiền ${res.final.toLocaleString()} VNĐ</b><br>
  <span style="color:#666;font-size:13px">⚠️ Giá trên chỉ mang tính tham khảo, có thể thay đổi theo thực tế công trình</span>
  `;
  lastMsg=`${name} - ${phone} - ${res.final}`;
