@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Báo giá sơn Orinex</title>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+(function(){
+    emailjs.init("0vRoeBRjITUTinDL7");
+})();
+</script>
+
+<style>
+*{box-sizing:border-box}
+body{
+  font-family:-apple-system,Arial;
+  background:linear-gradient(135deg,#0a3d91,#1e73be);
+  margin:0;
+  padding:10px;
+}
+.container{
+  background:#fff;
+  border-radius:14px;
+  padding:16px;
+  max-width:700px;
+  margin:auto;
+}
+.logo{text-align:center}
+.logo img{width:140px}
+h2{
+  text-align:center;
+  color:#0a3d91;
+  font-size:18px;
+  margin:10px 0;
+}
+input,select{
+  width:100%;
+  padding:12px;
+  margin:6px 0;
+  border-radius:10px;
+  border:1px solid #ccc;
+  font-size:16px;
+}
+.btn{
+  width:100%;
+  padding:13px;
+  margin-top:6px;
+  border-radius:10px;
+  border:none;
+  font-size:16px;
+  font-weight:bold;
+  color:#fff;
+  text-align:center;
+  text-decoration:none;
+  display:block;
+  cursor: pointer;
+}
+.main{background:#1e73be}
+.zalo{background:#0084ff}
+.call{background:#28a745}
+.download{background:#ff9800}
+.result{
+  margin-top:12px;
+  padding:12px;
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:10px;
+  line-height:1.5;
+  word-wrap:break-word;
+  display: none; /* Ẩn khi chưa tính */
+}
+hr{
+  margin:12px 0;
+  border:none;
+  border-top:1px solid #eee;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+<div class="logo">
+<img src="https://orinexpaint.com/uploads/orine-logo.png">
+</div>
+<h2>BÁO GIÁ SƠN ORINEX</h2>
+<input id="name" placeholder="Họ và tên">
+<input id="phone" placeholder="SĐT">
+<input id="address" placeholder="Địa chỉ">
+<hr>
+<input id="area" type="number" placeholder="Diện tích đất (m²)">
+<input id="floor" type="number" placeholder="Số tầng">
+<select id="houseType">
+<option value="ong">Nhà phố (nhà ống)</option>
+<option value="vuong">Biệt thự (nhà vuông)</option>
+<option value="cap4">Nhà cấp 4</option>
+</select>
+<select id="room">
+<option value="3">< 4 phòng</option>
+<option value="4">≥ 4 phòng</option>
+</select>
+<select id="paint">
+<option value="60000">Kinh tế</option>
+<option value="75000">Tiết kiệm</option>
+<option value="90000">Trung cấp</option>
+<option value="110000">Cao cấp</option>
+</select>
+<input id="discount" type="text" placeholder="% chiết khấu">
+<button class="btn main" onclick="run()">🚀 TÍNH GIÁ</button>
+<div id="kq" class="result"></div>
+<button class="btn zalo" onclick="zalo()">💬 Zalo (Mr. Tuấn: 0983.211.699)</button>
+<a href="tel:0983211699" class="btn call">📞 Gọi ngay để được tư vấn</a>
+<a class="btn download" target="_blank" href="https://drive.google.com/uc?export=download&id=1RTFXaD4YMYi6w20ef9lCJnwc3SHuIuU7">📥 Tải bảng báo giá</a>
+</div>
+
+<script>
+const nameInput=document.getElementById("name");
+const phoneInput=document.getElementById("phone");
+const addressInput=document.getElementById("address");
+const areaInput=document.getElementById("area");
+const floorInput=document.getElementById("floor");
+const houseType=document.getElementById("houseType");
+const roomInput=document.getElementById("room");
+const paintInput=document.getElementById("paint");
+const discountInput=document.getElementById("discount");
+const kq=document.getElementById("kq");
+
+let lastMsg="";
+
+discountInput.addEventListener("blur",function(){
+    let val=this.value.replace("%","");
+    if(val)this.value=val+"%";
+});
+
+discountInput.addEventListener("focus",function(){
+    this.value=this.value.replace("%","");
+});
+
+function tinh(){
+    let area=+areaInput.value||0;
+    let floor=+floorInput.value||0;
+    let room=+roomInput.value||0;
+    let type=houseType.value;
+    let paintVal=+paintInput.value||0;
+    let discount=discountInput.value.replace("%","");
+    discount=+discount||0;
+
+    let san=area * (floor || 1);
+    let dtson=type==="cap4" ? area*3.5 : san*((type==="ong")?(room<4?4.5:5):(room<4?5.5:6));
+    let total=dtson*paintVal;
+    let final=total-total*discount/100;
+
+    return{san,dtson,total,final,discount};
+}
+
+function run(){
+    let name=nameInput.value.trim();
+    let phone=phoneInput.value.trim();
+    let address=addressInput.value.trim();
+
+    if(!name || !phone){
+        Swal.fire({
+            icon: 'warning',
+            title: 'Thiếu thông tin',
+            text: 'Vui lòng nhập Họ tên và Số điện thoại!',
+            confirmButtonColor: '#1e73be',
+            confirmButtonText: 'Đã hiểu'
+        });
+        return;
+    }
+
+    // Đã xóa dấu đóng ngoặc lỗi ở đây
+    let typeText=houseType.selectedOptions[0].text;
+    let paintText=paintInput.selectedOptions[0].text;
+    let res=tinh();
+
+    kq.style.display = "block";
+    kq.innerHTML=`
+        <b>👤 ${name}</b><br>
+        📞 ${phone}<br>
+        📍 ${address}<br><br>
+        🏠 ${typeText}<br>
+        📐 DT sàn: ${res.san} m²<br>
+        🎯 DT sơn: ${res.dtson.toFixed(0)} m²<br>
+        🎨 ${paintText}<br><br>
+        💰 Giá gốc: ${res.total.toLocaleString()} VNĐ<br>
+        🔻 Chiết khấu: ${res.discount}%<br>
+        <b style="color:red;font-size:18px">💵 ${res.final.toLocaleString()} VNĐ</b><br><br>
+        <span style="color:#666;font-size:13px">⚠️ Giá trên chỉ mang tính tham khảo, có thể thay đổi theo thực tế công trình</span>
+    `;
+
+    lastMsg=`KHÁCH HÀNG ORINEX\n${name} - ${phone}\nĐ/C: ${address}\n${typeText}\nDT sơn: ${res.dtson.toFixed(0)} m2\n${paintText}\nCK: ${res.discount}%\nGiá: ${res.final.toLocaleString()} VNĐ`;
+
+    // Gửi email
+    emailjs.send("service_i9o0yze","template_g1t8o1d",{
+        name: name,
+        phone: phone,
+        address: address,
+        type: typeText,
+        area: res.san,
+        dtson: res.dtson.toFixed(0),
+        paint: paintText,
+        discount: res.discount,
+        price: res.final.toLocaleString()
+    }).then(function(){
+        console.log("Email sent!");
+    }, function(error){
+        console.log("Email failed...", error);
+    });
+}
+
+function zalo(){
+    if(!lastMsg){
+        Swal.fire({ icon: 'info', title: 'Thông báo', text: 'Bấm TÍNH GIÁ trước khi gửi Zalo' });
+        return;
+    }
+    navigator.clipboard.writeText(lastMsg);
+    alert("Đã sao chép báo giá. Hãy dán vào Zalo để gửi!");
+    window.open("https://zalo.me/0983211699","_blank");
+}
+</script>
+</body>
+</html>
