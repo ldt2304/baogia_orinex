@@ -232,15 +232,41 @@ function run(){
  Swal.fire({icon:'success',title:'Mọi chi tiết xin liên hệ: <br> Mr. Tuấn: 0983.211.699'});
 }
 
+// ===== ZALO =====
 function zalo(){
- if(!lastMsg){
-  Swal.fire({icon:'info',title:'Bấm tính giá trước'});
-  return;
- }
- navigator.clipboard.writeText(lastMsg);
- alert("Dán vào cửa số chat Zalo!");
- window.open("https://zalo.me/0983211699");
+
+let name = document.getElementById("name").value || "Khách";
+let phone = document.getElementById("phone").value || "";
+let address = document.getElementById("address").value || "";
+
+let typeText = document.getElementById("houseType").selectedOptions[0].text;
+let paintText = document.getElementById("paint").selectedOptions[0].text;
+
+let {dtson, final} = tinh();
+
+let msg = `KHÁCH HÀNG ORINEX
+${name}
+${phone}
+${address}
+
+${typeText}
+DT sơn: ${dtson.toFixed(0)} m2
+
+${paintText}
+Giá: ${final.toLocaleString()} VNĐ`;
+
+navigator.clipboard.writeText(msg);
+
+window.open("https://zalo.me/0983211699", "_blank");
+
+alert("Đã copy nội dung!\nChỉ cần dán vào Zalo và gửi.");
+
 }
+  // ===== GỌI =====
+function call(){
+window.location.href="tel:0983211699";
+}
+  
 </script>
 </body>
 </html>
