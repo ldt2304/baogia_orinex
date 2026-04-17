@@ -116,7 +116,7 @@ hr{
 
 <button class="btn zalo" onclick="zalo()">💬 Zalo (Mr. Tuấn: 0983.211.699)</button>
 <a href="tel:0983211699" class="btn call">📞 Gọi ngay để được tư vấn</a>
-<a class="btn download" target="_blank" href="https://github.com/ldt2304/baogia_orinex/blob/main/baogia.pdf">📥 Tải bảng báo giá</a>
+<a class="btn download" target="_blank" href="baogia.pdf">📥 Tải bảng báo giá</a>
 </div>
 
 <!-- FORM EMAIL -->
@@ -197,9 +197,9 @@ function run(){
  🎨 ${paintText}<br><br>
  💰 Giá gốc: ${res.total.toLocaleString()} VNĐ<br>
  🔻 Chiết khấu: ${res.discount}%<br>
- <b style="color:red;font-size:18px">💵 ${res.final.toLocaleString()} VNĐ</b>
+ <b style="color:red;font-size:18px">💵 ${res.final.toLocaleString()} VNĐ</b><br><br>
+ <span style="color:#666;font-size:13px">⚠️ Giá trên chỉ mang tính tham khảo, có thể thay đổi theo thực tế công trình</span>
  `;
-
  lastMsg=`${name} - ${phone} - ${res.final}`;
 
  // Google Sheet
@@ -229,7 +229,7 @@ function run(){
  form.price.value=res.final.toLocaleString();
  form.submit();
 
- Swal.fire({icon:'success',title:'Đã gửi báo giá'});
+ Swal.fire({icon:'success',title:'Mọi chi tiết xin liên hệ: <br> Mr. Tuấn: 0983.211.699'});
 }
 
 function zalo(){
@@ -238,7 +238,7 @@ function zalo(){
   return;
  }
  navigator.clipboard.writeText(lastMsg);
- alert("Đã sao chép!");
+ alert("Dán vào cửa số chat Zalo!");
  window.open("https://zalo.me/0983211699");
 }
 </script>
