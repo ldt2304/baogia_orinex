@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SƠN QUỐC TẾ ORINEX - Tuyển Nhà Phân Phối & Đại Lý Toàn Quốc</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* --- BRAND COLOR PALETTE --- */
+        :root {
+            --primary-color: #0f4c81;    /* Xanh Navy chuyên nghiệp */
+            --secondary-color: #f26522;  /* Cam nhận diện thương hiệu Orinex */
+            --dark-color: #1e293b;       /* Màu chữ chủ đạo */
+            --light-bg: #f8fafc;         /* Màu nền phụ */
+            --white: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark-color);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- FIXED HEADER --- */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 10px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 52px;
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            transition: var(--transition);
+            letter-spacing: 0.5px;
+        }
+
+        .nav-menu a:hover {
+            color: var(--secondary-color);
+        }
+
+        .header-cta .btn-hotline {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 12px 22px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(15, 76, 129, 0.2);
+        }
+
+        .header-cta .btn-hotline:hover {
+            background: #0b375e;
+            transform: translateY(-2px);
+        }
+
+        /* --- HERO BANNER --- */
+        .hero-banner {
+            padding-top: 72px; 
+            position: relative;
+            background: #071524;
+            overflow: hidden;
+        }
+
+        .banner-wrapper {
+            width: 100%;
+            display: block;
+        }
+
+        .main-banner-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* --- STATS BAR --- */
+        .stats-bar {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 35px 0;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .stat-item h3 {
+            font-size: 2.6rem;
+            color: #ffcc00;
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        /* --- THƯ NGỎ ĐỐI TÁC --- */
+        .intro-section {
+            padding: 70px 0;
+            background: var(--light-bg);
+        }
+
+        .intro-card {
+            background: var(--white);
+            padding: 45px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border-left: 6px solid var(--primary-color);
+        }
+
+        .intro-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .intro-card p {
+            margin-bottom: 15px;
+            color: #475569;
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+
+        /* --- 🚀 TRUNG TÂM WEBSITE: HỢP TÁC --- */
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .solution-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: #e2e8f0;
+            color: var(--dark-color);
+            border: none;
+            padding: 12px 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--secondary-color);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(242, 101, 34, 0.3);
+        }
+
+        .solution-display-container {
+            position: relative;
+            min-height: 420px;
+        }
+
+        .solution-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(30px);
+            transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
+        }
+
+        .solution-layout.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+            position: relative; 
+        }
+
+        .solution-img-box img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        .feature-list i {
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+            margin-top: 3px;
+        }
+
+        .btn-register-now {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 700;
+            margin-top: 20px;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(242, 101, 34, 0.2);
+        }
+
+        .btn-register-now:hover {
+            background: #d44d13;
+            transform: translateY(-2px);
+        }
+
+        /* --- DÒNG SẢN PHẨM CHIẾN LƯỢC (SLIDER NGANG) --- */
+        .slider-section {
+            background-color: var(--light-bg);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slider-container {
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 50px;
+        }
+
+        .slider-wrapper {
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .slider-track {
+            display: flex;
+            gap: 25px;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: transform;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            width: calc((100% - 50px) / 3);
+            box-sizing: border-box;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 22px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-body h4 {
+            color: var(--primary-color);
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+        }
+
+        .card-body p {
+            color: #64748b;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            z-index: 10;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .slider-btn:hover {
+            background: var(--secondary-color);
+        }
+
+        .slider-btn.prev { left: 0; }
+        .slider-btn.next { right: 0; }
+
+        /* --- 📑 KHU VỰC TẢI TÀI LIỆU MỚI BỔ SUNG --- */
+        .download-section {
+            background: var(--white);
+            padding: 60px 0;
+            border-top: 1px dashed #e2e8f0;
+        }
+
+        .download-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .download-box {
+            background: var(--light-bg);
+            padding: 30px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border: 1px solid #e2e8f0;
+            transition: var(--transition);
+        }
+
+        .download-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-color: var(--primary-color);
+        }
+
+        .download-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+        }
+
+        .download-info h3 {
+            font-size: 1.2rem;
+            color: var(--dark-color);
+            margin-bottom: 5px;
+        }
+
+        .download-info p {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 15px;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .btn-download:hover {
+            background: var(--secondary-color);
+        }
+
+        /* --- THƯ VIỆN DỰ ÁN THỰC TẾ --- */
+        .project-section {
+            background: var(--light-bg);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            border: 1px solid #e2e8f0;
+        }
+
+        .project-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .project-title {
+            padding: 15px;
+            background: var(--primary-color);
+            color: var(--white);
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* --- CTA ĐĂNG KÝ HỢP TÁC --- */
+        .cta-section {
+            background: linear-gradient(rgba(15, 76, 129, 0.96), rgba(15, 76, 129, 0.96)), url('images/bg-pattern.jpg') #0f4c81;
+            color: var(--white);
+            padding: 80px 0;
+        }
+
+        .cta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .cta-info h2 {
+            font-size: 2.2rem;
+            color: #ffcc00;
+            margin-bottom: 20px;
+        }
+
+        .cta-info ul {
+            list-style: none;
+            margin-top: 25px;
+        }
+
+        .cta-info ul li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1rem;
+        }
+
+        .cta-info ul li i {
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+        }
+
+        .form-wrapper {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            color: var(--dark-color);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .form-wrapper h3 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 15px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+        }
+
+        .btn-submit:hover {
+            background: #d44d13;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #071524;
+            color: #94a3b8;
+            padding: 60px 0 30px 0;
+            font-size: 0.95rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding-bottom: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+        }
+
+        .footer-col p {
+            margin-bottom: 12px;
+        }
+
+        .footer-col i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 992px) {
+            .nav-menu { display: none; }
+            .solution-layout, .cta-grid, .download-grid { grid-template-columns: 1fr; gap: 40px; }
+            .stats-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .section-title { font-size: 1.8rem; }
+            .solution-display-container { min-height: auto; }
+            .solution-layout { position: relative; opacity: 1; visibility: visible; display: none; transform: none; }
+            .solution-layout.active { display: grid; }
+            .card { width: 100%; }
+        }
+        @media (min-width: 769px) and (max-width: 992px) {
+            .card { width: calc((100% - 25px) / 2); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo-box">
+                <img src="orinelogo.png" alt="ORINEX PAINT LOGO" class="logo-img">
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="#hop-tac-dai-ly">Hợp Tác Đại Lý</a></li>
+                <li><a href="#san-pham">Dòng Sản Phẩm</a></li>
+                <li><a href="#tai-lieu">Tải Báo Giá & Hồ Sơ</a></li>
+                <li><a href="#cong-trinh">Dự Án Thực Tế</a></li>
+            </ul>
+
+            <div class="header-cta">
+                <a href="tel:0983211699" class="btn-hotline">
+                    <i class="fa-solid fa-phone-volume"></i> 0983.211.699
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-banner">
+        <div class="banner-wrapper">
+            <img src="bannerchinh.jpg" alt="ORINEX PAINT BANNER CHÍNH" class="main-banner-img">
+        </div>
+    </section>
+
+    <section class="stats-bar">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <h3>500+</h3>
+                <p>Công trình hoàn thiện/năm</p>
+            </div>
+            <div class="stat-item">
+                <h3>20+</h3>
+                <p>Tỉnh thành phủ sóng</p>
+            </div>
+            <div class="stat-item">
+                <h3>60%</h3>
+                <p>Chiết khấu tối đa dự án</p>
+            </div>
+            <div class="stat-item">
+                <h3>10 Năm</h3>
+                <p>Cam kết bảo hành màng sơn</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="intro-section">
+        <div class="container">
+            <div class="intro-card">
+                <h3>Kính gửi: Quý Đối Tác, Nhà Đầu Tư & Khách Hàng Toàn Quốc,</h3>
+                <p>Sơn Quốc tế <strong>ORINEX</strong> xin gửi lời chào trân trọng nhất. Với mục tiêu mở rộng bản đồ phân phối và mang giải pháp sơn công nghệ Châu Âu cao cấp đến mọi miền tổ quốc, chúng tôi nỗ lực tìm kiếm những đối tác chiến lược có chung tầm nhìn định hướng thị trường.</p>
+                <p>Trở thành Nhà phân phối hoặc Đại lý chính thức của ORINEX, Quý đối tác không chỉ hợp tác kinh doanh một dòng sản phẩm chất lượng đạt đầy đủ chứng nhận ISO quốc tế, mà còn nhận được cam kết đồng hành, hỗ trợ nền tảng marketing vững chắc để tối ưu hóa bài toán tăng trưởng doanh thu vượt trội tại địa phương.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="hop-tac-dai-ly">
+        <div class="container">
+            <h2 class="section-title">Hợp Tác Tìm Kiếm Nhà Phân Phối Và Đại Lý</h2>
+            <p class="section-subtitle">Chính sách đồng hành toàn diện - Cơ hội bứt phá doanh thu ngành vật liệu xây dựng</p>
+            
+            <div class="solution-tabs">
+                <button class="tab-btn active" onclick="switchSolution(0)">01. Đặc Quyền Hợp Tác</button>
+                <button class="tab-btn" onclick="switchSolution(1)">02. Hỗ Trợ Thị Trường</button>
+                <button class="tab-btn" onclick="switchSolution(2)">03. Cam Kết Doanh Thu</button>
+            </div>
+
+            <div class="solution-display-container">
+                <div class="solution-layout active">
+                    <div class="solution-img-box">
+                        <img src="QCCT.jpg" alt="Đặc quyền hợp tác đại lý Orinex">
+                    </div>
+                    <div class="solution-content">
+                        <h3 style="color: var(--primary-color); margin-bottom: 15px; font-size: 1.4rem;">Chính Sách Đặc Quyền Dành Cho Đại Lý</h3>
+                        <p style="color: #475569;">ORINEX mang đến cơ chế hợp tác thông thoáng, giảm thiểu rủi ro dòng vốn và tối đa hóa lợi thế cạnh tranh:</p>
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-tags"></i> <span><strong>Chiết khấu hấp dẫn:</strong> Tỷ lệ chiết khấu thương mại cạnh tranh hàng đầu thị trường sơn hiện nay.</span></li>
+                            <li><i class="fa-solid fa-map-location-dot"></i> <span><strong>Bảo hộ độc quyền khu vực:</strong> Cam kết duy trì một đại lý/nhà phân phối duy nhất tại địa bàn quản lý.</span></li>
+                            <li><i class="fa-solid fa-truck-moving"></i> <span><strong>Vận chuyển thần tốc:</strong> Hỗ trợ chính sách giao hàng miễn phí tận kho bãi, chân công trình.</span></li>
+                        </ul>
+                        <a href="#dang-ky-doi-tac" class="btn-register-now">
+                            <i class="fa-solid fa-handshake"></i> Đăng Ký Nhận Cơ Chế Ngay
+                        </a>
+                    </div>
+                </div>
+
+                <div class="solution-layout">
+                    <div class="solution-img-box">
+                        <img src="lotvabongngoaithat2.jpg" alt="Hỗ trợ khai trương đại lý Orinex">
+                    </div>
+                    <div class="solution-content">
+                        <h3 style="color: var(--primary-color); margin-bottom: 15px; font-size: 1.4rem;">Hỗ Trợ Khai Trương & Phát Triển Thị Trường</h3>
+                        <p style="color: #475569;">Chúng tôi không để đại lý tự bơi. ORINEX đầu tư đồng bộ bộ nhận diện thương hiệu chuẩn mực tận showroom:</p>
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-store"></i> <span><strong>Thiết kế Showroom:</strong> Hỗ trợ 100% biển bảng quảng cáo ngoài trời, kệ trưng bày sơn mẫu.</span></li>
+                            <li><i class="fa-solid fa-palette"></i> <span><strong>Vật phẩm Marketing:</strong> Cung cấp miễn phí tài liệu Catalog, quạt màu pha sơn, đồng phục thợ sơn.</span></li>
+                            <li><i class="fa-solid fa-bullhorn"></i> <span><strong>Truyền thông số:</strong> Chạy quảng cáo định vị vị trí đại lý để đẩy data khách hàng khu vực về cho Sếp.</span></li>
+                        </ul>
+                        <a href="#dang-ky-doi-tac" class="btn-register-now">
+                            <i class="fa-solid fa-file-signature"></i> Đăng Ký Nhận Hỗ Trợ Catalog
+                        </a>
+                    </div>
+                </div>
+
+                <div class="solution-layout">
+                    <div class="solution-img-box">
+                        <img src="Bobachongtham.jpg" alt="Cam kết doanh thu bền vững">
+                    </div>
+                    <div class="solution-content">
+                        <h3 style="color: var(--primary-color); margin-bottom: 15px; font-size: 1.4rem;">Cam Kết Chất Lượng & Lợi Nhuận Bền Vững</h3>
+                        <p style="color: #475569;">Xây dựng uy tín từ gốc rễ sản phẩm công nghệ Châu Âu, giữ chân thợ thầu và người tiêu dùng lâu dài:</p>
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-award"></i> <span><strong>Chuẩn ISO Chất Lượng:</strong> Màng sơn bóng, mịn chịu chùi rửa tuyệt đối, độ bền màng sơn trên 10 năm.</span></li>
+                            <li><i class="fa-solid fa-calculator"></i> <span><strong>Thưởng doanh số năm:</strong> Phần thưởng vượt chỉ tiêu năm cực cao, tặng hiện vật giá trị lớn (Vàng SJC).</span></li>
+                            <li><i class="fa-solid fa-chalkboard-user"></i> <span><strong>Đào tạo kỹ thuật:</strong> Huấn luyện chuyên sâu cho nhân viên đại lý về tính năng phối màu và tư vấn vật tư.</span></li>
+                        </ul>
+                        <a href="#dang-ky-doi-tac" class="btn-register-now">
+                            <i class="fa-solid fa-arrow-up-right-dots"></i> Trở Thành Đại Lý Trực Thuộc
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding slider-section" id="san-pham">
+        <div class="container">
+            <h2 class="section-title">Hệ Thống Dòng Sản Phẩm Chiến Lược</h2>
+            <p class="section-subtitle">Sản phẩm đạt chuẩn ISO - Đa dạng phân khúc đáp ứng mọi yêu cầu kỹ thuật dự án</p>
+            
+            <div class="slider-container">
+                <button class="slider-btn prev" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="slider-btn next" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+                
+                <div class="slider-wrapper">
+                    <div class="slider-track" id="sliderTrack">
+                        <div class="card">
+                            <img src="SieuBongNgoaiThat.jpg" class="card-img" alt="Siêu Bóng Ngoại Thất">
+                            <div class="card-body">
+                                <h4>Siêu Bóng Ngoại Thất</h4>
+                                <p>Màng sơn bóng sang trọng, chống bám bụi bẩn vượt trội, tự làm sạch bề mặt cực tốt và ngăn chặn hoàn toàn tác động phá hủy từ tia UV.</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="chongthammau.jpg" class="card-img" alt="Chống Thấm Màu Orinex">
+                            <div class="card-body">
+                                <h4>Chống Thấm Màu Cao Cấp</h4>
+                                <p>Đột phá công nghệ kháng nước đa tầng, che phủ hoàn hảo các vết nứt chân chim, vừa trang trí màu sắc tinh tế vừa chống thấm tuyệt hảo.</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="nhuvang.jpg" class="card-img" alt="Sơn Nhũ Vàng Orinex">
+                            <div class="card-body">
+                                <h4>Sơn Nhũ Vàng 24K Cao Cấp</h4>
+                                <p>Hiệu ứng ánh vàng kim lấp lánh bền bỉ theo thời gian, chuyên dùng cho các đường phào chỉ kiến trúc tân cổ điển, đền chùa hoàng gia sang trọng.</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="sieutrangtran.jpg" class="card-img" alt="Siêu Trắng Trần Orinex">
+                            <div class="card-body">
+                                <h4>Siêu Trắng Trần Chống Thấm</h4>
+                                <p>Độ trắng sáng tuyệt đối, độ mịn che khuyết điểm thạch cao vượt trội, giúp không gian nội thất mở rộng, sáng sủa và chống ẩm mốc trần nhà bứt phá.</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="lotvabongngoaithat2.jpg" class="card-img" alt="Lót Và Bóng Ngoại Thất">
+                            <div class="card-body">
+                                <h4>Sơn Lót Và Sơn Bóng Ngoại Thất</h4>
+                                <p>Giải pháp tối ưu đẩy nhanh tiến độ thi công cho nhà thầu, tăng cường liên kết bám dính siêu hạng và tạo lớp nền cực tốt.</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="sieulangminngoaithat.jpg" class="card-img" alt="Siêu Láng Mịn Ngoại Thất">
+                            <div class="card-body">
+                                <h4>Siêu Láng Mịn Ngoại Thất</h4>
+                                <p>Tạo nên bề mặt mịn màng mịn màng như lụa, độ che phủ khuyết điểm cực tốt, mang lại vẻ đẹp bền màu tinh tế trường tồn.</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="sieubongnoithat2.jpg" class="card-img" alt="Siêu Bóng Nội Thất">
+                            <div class="card-body">
+                                <h4>Siêu Bóng Nội Thất Cao Cấp</h4>
+                                <p>Màu sắc sống động, chịu chùi rửa vết bẩn tuyệt đối, đạt chứng chỉ ECO thân thiện và tuyệt đối an toàn cho sức khỏe gia đình.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="download-section" id="tai-lieu">
+        <div class="container">
+            <h2 class="section-title">Trung Tâm Tải Tài Liệu Kỹ Thuật</h2>
+            <p class="section-subtitle">Hệ thống minh bạch thông tin - Hỗ trợ công cụ tối ưu cho Thầu thợ và Đại lý</p>
+            
+            <div class="download-grid">
+                <div class="download-box">
+                    <div class="download-icon">
+                        <i class="fa-solid fa-calculator"></i>
+                    </div>
+                    <div class="download-info">
+                        <h3>Bảng Báo Giá Vật Tư & Công Cụ Tính</h3>
+                        <p>Hệ thống hỗ trợ tính toán chi phí, định lượng khối lượng thùng sơn chuẩn xác theo diện tích mặt bằng thi công.</p>
+                        <a href="https://ldt2304.github.io/baogia_orinex/" target="_blank" class="btn-download">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Xem & Tính Báo Giá Ngay
+                        </a>
+                    </div>
+                </div>
+
+                <div class="download-box">
+                    <div class="download-icon">
+                        <i class="fa-solid fa-file-pdf" style="color: #dc2626;"></i>
+                    </div>
+                    <div class="download-info">
+                        <h3>Hồ Sơ Năng Lực Công Ty</h3>
+                        <p>Bao gồm đầy đủ thông số kỹ thuật, chứng chỉ kiểm định chất lượng ISO và các công trình dự án quốc gia tiêu biểu.</p>
+                        <a href="baogia_npp.pdf" onclick="alert('Đang chuẩn bị file Hồ sơ năng lực PDF bản cập nhật mới nhất 2026. Sếp vui lòng gắn link file PDF vào phần code href nhé!'); return false;" class="btn-download">
+                            <i class="fa-solid fa-cloud-arrow-down"></i> Tải Hồ Sơ Năng Lực (PDF)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding project-section" id="cong-trinh">
+        <div class="container">
+            <h2 class="section-title">Công Trình Thực Tế Tiêu Biểu</h2>
+            <p class="section-subtitle">Chất lượng được chứng thực trực tiếp từ các dự án lớn trên toàn quốc</p>
+            
+            <div class="project-grid">
+                <div class="project-card">
+                    <img src="duannhachothue.jpg" class="project-img" alt="Dự án nhà ở cho thuê">
+                    <div class="project-title">Dự Án Nhà Ở Cho Thuê Cao Cấp</div>
+                </div>
+                <div class="project-card">
+                    <img src="trusoanbinh.jpg" class="project-img" alt="Trụ sở An Bình">
+                    <div class="project-title">Công Trình Trụ Sở Công An Xã An Bình</div>
+                </div>
+                <div class="project-card">
+                    <img src="QC Cong Trinh.jpg" class="project-img" alt="Quảng cáo công trình Orinex">
+                    <div class="project-title">Hệ Thống Giám Sát Kỹ Thuật Tại Công Trường</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="dang-ky-doi-tac">
+        <div class="container cta-grid">
+            <div class="cta-info">
+                <h2>Cơ Hội Sở Hữu Showroom Kinh Doanh Độc Quyền</h2>
+                <p>ORINEX hỗ trợ tối đa hạ tầng kỹ thuật và công nghệ để đảm bảo điểm hòa vốn của đại lý đạt tốc độ nhanh nhất:</p>
+                <ul>
+                    <li><i class="fa-solid fa-circle-check"></i> <span>Hỗ trợ máy pha màu vi tính tự động ngay tại showroom.</span></li>
+                    <li><i class="fa-solid fa-circle-check"></i> <span>Hỗ trợ công cụ tính toán báo giá nhanh ldt2304.github.io/baogia_orinex/</span></li>
+                    <li><i class="fa-solid fa-circle-check"></i> <span>Chính sách đổi trả hàng hóa linh hoạt theo mùa vụ công trình.</span></li>
+                </ul>
+            </div>
+
+            <div class="form-wrapper">
+                <h3>ĐĂNG KÝ ĐẠI LÝ / NPP CHÍNH THỨC</h3>
+                
+                <form id="orinex-partner-form" action="https://formspree.io/f/mdavwwye" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="Họ tên người liên hệ" placeholder="Họ tên người đăng ký liên hệ *" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="Số điện thoại / Zalo" placeholder="Số điện thoại cá nhân/Zalo *" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="Khu vực dự kiến mở" placeholder="Khu vực dự kiến mở Đại lý (Quận/Huyện/Tỉnh) *" required>
+                    </div>
+                    <div class="form-group">
+                        <select name="Hình thức mong muốn hợp tác" required>
+                            <option value="" disabled selected>Hình thức mong muốn hợp tác...</option>
+                            <option value="Nhà Phân Phối Cấp Toàn Tỉnh">Đăng ký Nhà Phân Phối Độc Quyền Cấp Tỉnh</option>
+                            <option value="Đại Lý Cấp 1">Đăng ký làm Đại Lý Cấp 1 khu vực</option>
+                            <option value="Đại Lý Cấp 2">Đăng ký làm Đại Lý Cấp 2 / Điểm phân phối phụ</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="Ghi chú về mặt bằng/kinh nghiệm" rows="3" placeholder="Ghi chú thêm về kinh nghiệm kinh doanh hoặc mặt bằng có sẵn (nếu có)"></textarea>
+                    </div>
+                    
+                    <input type="hidden" name="_subject" value="[ĐĂNG KÝ ĐẠI LÝ MỚI] Dữ liệu từ website Orinex Paint">
+                    
+                    <button type="submit" class="btn-submit">Gửi Đăng Ký Hợp Tác</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4 style="color: #ffcc00;">CÔNG TY CỔ PHẦN TMDV VÀ SẢN XUẤT SƠN QUỐC TẾ ORINEX</h4>
+                    <p style="font-size: 0.9rem; line-height: 1.7;">Thương hiệu hàng đầu cung cấp giải pháp sơn và chống thấm công nghệ Châu Âu hiện đại. Đạt tiêu chuẩn ISO chất lượng cao, bảo vệ vững chắc mọi công trình xây dựng Việt Nam.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Thông Tin Liên Hệ</h4>
+                    <p><i class="fa-solid fa-user-tie"></i> Đại diện: Mr. Tuấn</p>
+                    <p><i class="fa-solid fa-phone"></i> Hotline: 0983.211.699</p>
+                    <p><i class="fa-solid fa-globe"></i> Website: www.orinexpaint.com</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Địa chỉ:</h4>
+                    <p><i class="fa-solid fa-location-dot"></i> Số 23A, Tự Đoài, P. Thành Đông, TP. Hải Dương, Việt Nam</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Sơn Quốc Tế ORINEX. Đã đăng ký bản quyền thương hiệu giải pháp công trình.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /* --- 1. XỬ LÝ KHỐI CHUYỂN CẢNH ĐỐI TÁC TRUNG TÂM --- */
+        let currentSolIndex = 0;
+        const solutions = document.querySelectorAll('.solution-layout');
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const totalSolutions = solutions.length;
+
+        function switchSolution(index) {
+            currentSolIndex = index;
+            solutions.forEach(sol => sol.classList.remove('active'));
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            
+            solutions[currentSolIndex].classList.add('active');
+            tabButtons[currentSolIndex].classList.add('active');
+        }
+
+        let solutionTimer = setInterval(() => {
+            currentSolIndex = (currentSolIndex + 1) % totalSolutions;
+            switchSolution(currentSolIndex);
+        }, 4000);
+
+        function resetSolutionTimer() {
+            clearInterval(solutionTimer);
+            solutionTimer = setInterval(() => {
+                currentSolIndex = (currentSolIndex + 1) % totalSolutions;
+                switchSolution(currentSolIndex);
+            }, 4000);
+        }
+
+        tabButtons.forEach((btn, idx) => {
+            btn.addEventListener('click', () => {
+                switchSolution(idx);
+                resetSolutionTimer();
+            });
+        });
+
+
+        /* --- 2. XỬ LÝ KHỐI SLIDER DÒNG SẢN PHẨM (HỖ TRỢ 7 SẢN PHẨM MƯỢT MÀ) --- */
+        const track = document.getElementById('sliderTrack');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const cards = document.querySelectorAll('.card');
+        
+        let currentIndex = 0;
+        const totalCards = cards.length;
+        
+        function getVisibleCardsCount() {
+            if (window.innerWidth <= 992 && window.innerWidth > 768) return 2;
+            if (window.innerWidth <= 768) return 1;
+            return 3;
+        }
+
+        function updateSlider() {
+            const visibleCount = getVisibleCardsCount();
+            const maxIndex = totalCards - visibleCount;
+            
+            if (currentIndex > maxIndex) {
+                currentIndex = 0;
+            } else if (currentIndex < 0) {
+                currentIndex = maxIndex;
+            }
+
+            const cardWidth = cards[0].getBoundingClientRect().width;
+            const amountToMove = currentIndex * (cardWidth + 25);
+            
+            track.style.transform = `translateX(-${amountToMove}px)`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex++;
+            updateSlider();
+            resetProductTimer();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex--;
+            updateSlider();
+            resetProductTimer();
+        });
+
+        let productTimer = setInterval(() => {
+            currentIndex++;
+            updateSlider();
+        }, 3000);
+
+        function resetProductTimer() {
+            clearInterval(productTimer);
+            productTimer = setInterval(() => {
+                currentIndex++;
+                updateSlider();
+            }, 3000);
+        }
+
+        window.addEventListener('resize', () => {
+            updateSlider();
+        });
+
+
+        /* --- 3. XỬ LÝ THÔNG BÁO POPUP KHI KHÁCH BẤM GỬI FORM --- */
+        const form = document.getElementById('orinex-partner-form');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const submitBtn = form.querySelector('.btn-submit');
+            submitBtn.innerText = "ĐANG GỬI DỮ LIỆU...";
+            submitBtn.disabled = true;
+
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    alert("Mọi chi tiết liên hệ: Mr Tuấn - 0983.211.699");
+                    form.reset();
+                } else {
+                    alert("Có lỗi xảy ra khi gửi dữ liệu. Sếp vui lòng kiểm tra lại kết nối internet.");
+                }
+            }).catch(error => {
+                alert("Có lỗi kết nối mạng. Vui lòng liên hệ trực tiếp hotline: 0983.211.699");
+            }).finally(() => {
+                submitBtn.innerText = "GỬI ĐĂNG KÝ HỢP TÁC";
+                submitBtn.disabled = false;
+            });
+        });
+    </script>
+
+</body>
+</html>
