@@ -119,21 +119,20 @@ hr{
 <a class="btn download" target="_blank" href="baogia.pdf">📥 Tải bảng báo giá</a>
 </div>
 
-<!-- FORM EMAIL -->
-<form id="emailForm"
-action="https://formsubmit.co/ldt2304@gmail.com"
-method="POST" target="hidden_iframe" style="display:none;">
-<input name="name"><input name="phone"><input name="address">
-<input name="type"><input name="area"><input name="dtson">
-<input name="paint"><input name="discount"><input name="price">
-<input type="hidden" name="_subject" value="Khách hàng Orinex">
-<input type="hidden" name="_captcha" value="false">
+<form id="emailForm" action="https://formspree.io/f/mdavwwye" method="POST" style="display:none;">
+<input name="_subject"> <input name="Ho_Ten">
+<input name="So_Dien_Thoai">
+<input name="Dia_Chi">
+<input name="Loai_Nha">
+<input name="Dien_Tich_San">
+<input name="Dien_Tich_Son">
+<input name="Loai_Son">
+<input name="Chiet_Khau">
+<input name="Thanh_Tien">
 </form>
-<iframe name="hidden_iframe" style="display:none;"></iframe>
 
 <script>
 const SHEET_URL = "https://script.google.com/macros/s/AKfycbw9bT1bfrTawCFFJdBIIW-gse1U_iGVBrmwsmpFbjXLNiynfzO-riUIZ9_Mn3BgCLJS/exec";
-
 const nameInput=document.getElementById("name");
 const phoneInput=document.getElementById("phone");
 const addressInput=document.getElementById("address");
@@ -144,7 +143,6 @@ const roomInput=document.getElementById("room");
 const paintInput=document.getElementById("paint");
 const discountInput=document.getElementById("discount");
 const kq=document.getElementById("kq");
-
 let lastMsg="";
 
 discountInput.addEventListener("blur",function(){
@@ -215,6 +213,7 @@ function run(){
 🔻 Chiết khấu: ${res.discount}%
 💵 Thành tiền: ${res.final.toLocaleString()} VNĐ`;
 
+ // 1. GỬI LÊN GOOGLE SHEETS ASYNC
  fetch(SHEET_URL,{
   method:"POST",
   body:JSON.stringify({
@@ -228,19 +227,39 @@ function run(){
   })
  });
 
+ // 2. ĐỔ DỮ LIỆU VÀO FORM VÀ TIẾN HÀNH GỬI BẰNG FETCH (AJAX) LÊN FORMSPREE
  let form=document.getElementById("emailForm");
- form.name.value=name;
- form.phone.value=phone;
- form.address.value=address;
- form.type.value=typeText;
- form.area.value=res.san;
- form.dtson.value=res.dtson.toFixed(0);
- form.paint.value=paintText;
- form.discount.value=res.discount;
- form.price.value=res.final.toLocaleString();
- form.submit();
+ form._subject.value = "Khách hàng: " + name + " yêu cầu tư vấn"; // Gán tiêu đề động theo tên khách hàng
+ form.Ho_Ten.value=name;
+ form.So_Dien_Thoai.value=phone;
+ form.Dia_Chi.value=address;
+ form.Loai_Nha.value=typeText;
+ form.Dien_Tich_San.value=res.san + " m²";
+ form.Dien_Tich_Son.value=res.dtson.toFixed(0) + " m²";
+ form.Loai_Son.value=paintText;
+ form.Chiet_Khau.value=res.discount + "%";
+ form.Thanh_Tien.value=res.final.toLocaleString() + " VNĐ";
 
- Swal.fire({icon:'success',title:'Mọi chi tiết xin liên hệ: <br> Mr. Tuấn: 0983.211.699'});
+ let formData = new FormData(form);
+
+ fetch(form.action, {
+  method: form.method,
+  body: formData,
+  headers: {
+    'Accept': 'application/json'
+  }
+ }).then(response => {
+   // Không làm gián đoạn trải nghiệm của khách
+ }).catch(error => {
+   console.log("Formspree Error:", error);
+ });
+
+ // 3. HIỂN THỊ THÔNG BÁO CHO KHÁCH HÀNG
+ Swal.fire({
+  icon: 'success',
+  title: 'Mọi chi tiết xin liên hệ:',
+  html: '<b style="font-size:18px;color:#0a3d91;">Mr. Tuấn: 0983.211.699</b>'
+ });
 }
 
 // ===== ZALO AUTO =====
@@ -251,14 +270,13 @@ function zalo(){
     title:'Thông báo',
     text:'Bấm TÍNH GIÁ trước'
   });
-  return;
+ return;
  }
 
  navigator.clipboard.writeText(lastMsg);
 
  let text = encodeURIComponent(lastMsg);
  let url = `https://zalo.me/0983211699?text=${text}`;
-
  Swal.fire({
    icon:'success',
    title:'Đã mở Zalo',
